@@ -17,6 +17,15 @@ public class Slot {
     private Date date;
     private boolean isBook;
 
+    public Slot(int id, Date time, Date date, boolean isBook, Service allocatedService, Patient allocatedPatient) {
+        this.id = id;
+        this.time = time;
+        this.date = date;
+        this.isBook = isBook;
+        this.allocatedService = allocatedService;
+        this.allocatedPatient = allocatedPatient;
+    }
+    
     public int getId() {
         return id;
     }

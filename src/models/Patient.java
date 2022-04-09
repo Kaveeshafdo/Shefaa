@@ -14,6 +14,12 @@ public class Patient {
     private String name;
     private String residanceType;
 
+    public Patient(int pid, String name, String residanceType) {
+        this.pid = pid;
+        this.name = name;
+        this.residanceType = residanceType;
+    }
+    
     public int getPid() {
         return pid;
     }

@@ -15,6 +15,15 @@ public class Service {
     private int maxSlots;
     private int pricePerSlot;
 
+    public Service(int id, String title, int maxSlots, int pricePerSlot) {
+        this.id = id;
+        this.title = title;
+        this.maxSlots = maxSlots;
+        this.pricePerSlot = pricePerSlot;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
