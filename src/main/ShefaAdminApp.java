@@ -21,7 +21,8 @@ public class ShefaAdminApp {
     private List<Slot> slot;
 
     public String addPatient(Patient P) {
-        return "";
+        patient.add(P);
+        return "'"+P.getName()+"' added successfully";
     }
 
     public String deletePatient(int qid) {
@@ -64,6 +65,10 @@ public class ShefaAdminApp {
     }
 
     public void showAllPatients() {
+        for(int i = 0; i<patient.size();i++){
+            Patient p = patient.get(i);
+            System.out.println(p.getPid()+" "+p.getName()+" "+p.getResidanceType());
+        }
     }
 
     public void showAllSlots() {
