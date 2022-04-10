@@ -27,7 +27,15 @@ public class ShefaAdminApp {
     }
 
     public String deletePatient(int qid) {
-        return "";
+        Patient p=null;
+        for (int i = 0; i < patient.size(); i++) {
+            p = patient.get(i);
+            if(p.getPid()==qid){
+                patient.remove(i);
+                return "'" + p.getName() + "' Delete Successfully";
+            }
+        }
+        return "Patient Not Found!";
     }
 
     public Patient findPatient(int qid) {
