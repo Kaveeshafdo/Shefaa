@@ -31,6 +31,7 @@ public class ShefaAdminApp {
         for (int i = 0; i < patient.size(); i++) {
             p = patient.get(i);
             if (p.getPid() == qid) {
+                String name = p.getName();
                 patient.remove(i);
                 return "'" + p.getName() + "' Delete Successfully";
             }
@@ -68,7 +69,16 @@ public class ShefaAdminApp {
     }
 
     public String deleteService(String serveTitle) {
-        return "";
+        Service s = null;
+        for (int i = 0; i < service.size(); i++) {
+            s = service.get(i);
+            if (s.getTitle().equals(serveTitle)) {
+                String name = s.getTitle();
+                service.remove(i);
+                return "'" + s.getTitle() + "' Delete Successfully";
+            }
+        }
+        return "Patient Not Found!";
     }
 
     public String findService(String serveTitle) {
