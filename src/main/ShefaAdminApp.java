@@ -81,7 +81,14 @@ public class ShefaAdminApp {
         return "Patient Not Found!";
     }
 
-    public String findService(String serveTitle) {
+    public Service findService(String serveTitle) {
+        Service s = null;
+        for (int i = 0; i < service.size(); i++) {
+            s = service.get(i);
+            if (s.getTitle().equals(serveTitle)) {
+                return s;
+            }
+        }
         return null;
     }
 
