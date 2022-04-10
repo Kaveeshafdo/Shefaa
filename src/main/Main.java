@@ -126,11 +126,28 @@ public class Main {
 
                 case 3:
                     System.out.println("Please enter suboption number");
-                    System.out.println("(1) - Add Patient");
-                    System.out.println("(2) - Delete Patient");
-                    System.out.println("(3) - Find Patient");
-                    System.out.println("(4) - Modify Patient");
+                    System.out.println("(1) - Add Empty Slot");
+                    System.out.println("(2) - Delete Slot");
+                    System.out.println("(3) - Reserve Slot");
+                    System.out.println("(4) - find Slots By Date");
                     System.out.println("(5) - Back");
+                    System.out.println("(6) - Exit");
+                     int SlotSubOptionNumber = sc.nextInt();
+                    menu.setMenu(SlotSubOptionNumber);
+                    switch (menu.getMenu()) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                    }
                     break;
 
                 case 4:
