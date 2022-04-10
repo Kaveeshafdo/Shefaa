@@ -184,11 +184,23 @@ public class ShefaAdminApp {
         return false;
     }
 
-    public List<Slot> getServiceSlotsStatus(Date date, String ServTitle) {
-        return null;
+    public List<Slot> getServiceSlotsStatus(String date, String ServTitle) {
+        List<Slot> list = new ArrayList<Slot>();
+        for (int i = 0; i < slot.size(); i++) {
+            if (slot.get(i).getDate().equals(date) && slot.get(i).getAllocatedService().getTitle().equals(ServTitle)) {
+                list.add(slot.get(i));
+            }
+        }
+        return list;
     }
 
-    public Boolean getSlotsPerService(String ServName, Date date, Time time) {
-        return null;
+    public List<Slot> getSlotsPerService(String ServTitle) {
+        List<Slot> list = new ArrayList<Slot>();
+        for (int i = 0; i < slot.size(); i++) {
+            if (slot.get(i).getAllocatedService().getTitle().equals(ServTitle)) {
+                list.add(slot.get(i));
+            }
+        }
+        return list;
     }
 }
