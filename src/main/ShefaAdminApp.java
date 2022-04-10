@@ -114,6 +114,10 @@ public class ShefaAdminApp {
     }
 
     public void showAllServices() {
+        for (int i = 0; i < service.size(); i++) {
+            Service s = service.get(i);
+            System.out.println(s.getId() + " " + s.getTitle()+ " " + s.getMaxSlots()+ " " + s.getPricePerSlot());
+        }
     }
 
     public void showAllPatients() {
