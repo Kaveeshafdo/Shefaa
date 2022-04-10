@@ -19,6 +19,10 @@ public class Patient {
         this.name = name;
         this.residanceType = residanceType;
     }
+
+    public Patient() {
+       
+    }
     
     public int getPid() {
         return pid;
