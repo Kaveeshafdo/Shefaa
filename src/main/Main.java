@@ -50,59 +50,65 @@ public class Main {
             menu.setMenu(optionNumber);
             switch (menu.getMenu()) {
                 case 1:
+                    do {
+                        System.out.println("Please enter suboption number");
+                        System.out.println("(1) - Add Patient");
+                        System.out.println("(2) - Delete Patient");
+                        System.out.println("(3) - Find Patient");
+                        System.out.println("(4) - Modify Patient");
+                        System.out.println("(5) - Show all Patient");
+                        System.out.println("(6) - Exit");
+                        int patientSubOptionNumber = sc.nextInt();
+                        menu.setMenu(patientSubOptionNumber);
+                        switch (menu.getMenu()) {
+                            case 1:
 
-                    System.out.println("Please enter suboption number");
-                    System.out.println("(1) - Add Patient");
-                    System.out.println("(2) - Delete Patient");
-                    System.out.println("(3) - Find Patient");
-                    System.out.println("(4) - Modify Patient");
-                    System.out.println("(5) - Show all Patient");
-                   
-                    int patientSubOptionNumber = sc.nextInt();
+                                System.out.println("Please Enter Patient Id");
+                                int patientIdNumber = sc.nextInt();
+                                System.out.println("Please Enter Patient Name");
+                                String patientName = sc.next();
+                                System.out.println("Please Enter Patient ResidanceType Number");
+                                System.out.println("(1) - VISITOR");
+                                System.out.println("(2) - RESIDENT");
+                                int residanceTypeNumber = sc.nextInt();
+                                if (residanceTypeNumber == 1) {
+                                    patient.setResidanceType("VISITOR");
+                                } else {
+                                    patient.setResidanceType("RESIDENT");
+                                }
 
-                    switch (patientSubOptionNumber) {
-                        case 1:
+                                Patient p = new Patient(patientIdNumber, patientName, patient.getResidanceType());
+                                System.out.println(shefaa.addPatient(p));
 
-                            System.out.println("Please Enter Patient Id");
-                            int patientIdNumber = sc.nextInt();
-                            System.out.println("Please Enter Patient Name");
-                            String patientName = sc.next();
-                            System.out.println("Please Enter Patient ResidanceType Number");
-                            System.out.println("(1) - VISITOR");
-                            System.out.println("(2) - RESIDENT");
-                            int residanceTypeNumber = sc.nextInt();
-                            if (residanceTypeNumber == 1) {
-                                patient.setResidanceType("VISITOR");
-                            } else {
-                                patient.setResidanceType("RESIDENT");
-                            }
+                            case 2:
+                                shefaa.deletePatient(1);
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                shefaa.showAllPatients();
+                                break;
+                            case 6:
 
-                            Patient p = new Patient(patientIdNumber, patientName, patient.getResidanceType());
-                            System.out.println(shefaa.addPatient(p));
+                                break;
+                        }
+                        break;
+                    } while (menu.getMenu() != 6);
 
-                        case 2:
-                            shefaa.deletePatient(1);
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                        case 5:
-                            shefaa.showAllPatients();
-                            break;
-                       
-                    }
-                    break;
                 case 2:
+
                     System.out.println("Please enter suboption number");
                     System.out.println("(1) - Add Service");
                     System.out.println("(2) - Delete Service");
                     System.out.println("(3) - Find Service");
                     System.out.println("(4) - Modify Service");
                     System.out.println("(5) - Back");
+                    System.out.println("(6) - Exit");
                     int ServiceSubOptionNumber = sc.nextInt();
-
-                    switch (ServiceSubOptionNumber) {
+                    menu.setMenu(ServiceSubOptionNumber);
+                    switch (menu.getMenu()) {
                         case 1:
                             break;
                         case 2:
@@ -113,8 +119,11 @@ public class Main {
                             break;
                         case 5:
                             break;
+                        case 6:
+                            break;
                     }
                     break;
+
                 case 3:
                     System.out.println("Please enter suboption number");
                     System.out.println("(1) - Add Patient");
@@ -123,12 +132,12 @@ public class Main {
                     System.out.println("(4) - Modify Patient");
                     System.out.println("(5) - Back");
                     break;
-                    
+
                 case 4:
                     break;
             }
         } while (menu.getMenu() != 4);
-        
+
     }
 
 }
