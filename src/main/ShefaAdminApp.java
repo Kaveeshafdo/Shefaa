@@ -39,6 +39,13 @@ public class ShefaAdminApp {
     }
 
     public Patient findPatient(int qid) {
+        Patient p=null;
+        for (int i = 0; i < patient.size(); i++) {
+            p = patient.get(i);
+            if(p.getPid()==qid){
+                return p;
+            }
+        }
         return null;
     }
 
