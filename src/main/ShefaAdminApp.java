@@ -92,8 +92,17 @@ public class ShefaAdminApp {
         return null;
     }
 
-    public String modifyService(int sid) {
-        return "";
+    public String modifyService(int sid, String title, int maxSlots, int pricePerSlot) {
+        for (int i = 0; i < service.size(); i++) {
+            if (service.get(i).getId()== sid) {
+                String name = service.get(i).getTitle();
+                service.get(i).setTitle(title);
+                service.get(i).setMaxSlots(maxSlots);
+                service.get(i).setPricePerSlot(pricePerSlot);
+                return "'" + name + "' Modified successfully as '"+service.get(i).getTitle()+"'";
+            }
+        }
+        return "Service Not Found!";
     }
 
     public String addEmptySlot() {
