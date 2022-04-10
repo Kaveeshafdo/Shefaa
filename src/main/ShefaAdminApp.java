@@ -27,10 +27,10 @@ public class ShefaAdminApp {
     }
 
     public String deletePatient(int qid) {
-        Patient p=null;
+        Patient p = null;
         for (int i = 0; i < patient.size(); i++) {
             p = patient.get(i);
-            if(p.getPid()==qid){
+            if (p.getPid() == qid) {
                 patient.remove(i);
                 return "'" + p.getName() + "' Delete Successfully";
             }
@@ -39,18 +39,27 @@ public class ShefaAdminApp {
     }
 
     public Patient findPatient(int qid) {
-        Patient p=null;
+        Patient p = null;
         for (int i = 0; i < patient.size(); i++) {
             p = patient.get(i);
-            if(p.getPid()==qid){
+            if (p.getPid() == qid) {
                 return p;
             }
         }
         return null;
     }
 
-    public String modifyPatient(int qid) {
-        return "";
+    public String modifyPatient(int qid, String newName, String residenttype) {
+
+        for (int i = 0; i < patient.size(); i++) {
+            if (patient.get(i).getPid() == qid) {
+                String name = patient.get(i).getName();
+                patient.get(i).setName(newName);
+                patient.get(i).setResidanceType(residenttype);
+                return "'" + name + "' Modified successfully as '"+patient.get(i).getName()+"'";
+            }
+        }
+        return "Patient Not Found!";
     }
 
     public String addService(Service s) {
