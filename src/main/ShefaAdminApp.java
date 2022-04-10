@@ -63,7 +63,8 @@ public class ShefaAdminApp {
     }
 
     public String addService(Service s) {
-        return "";
+        service.add(s);
+        return "'" + s.getTitle()+ "' added successfully";
     }
 
     public String deleteService(String serveTitle) {
