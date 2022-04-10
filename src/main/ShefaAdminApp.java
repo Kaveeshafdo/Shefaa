@@ -6,6 +6,7 @@
 package main;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import models.*;
@@ -16,13 +17,13 @@ import models.*;
  */
 public class ShefaAdminApp {
 
-    private List<Patient> patient;
-    private List<Service> service;
-    private List<Slot> slot;
+    private List<Patient> patient = new ArrayList<Patient>();
+    private List<Service> service = new ArrayList<Service>();
+    private List<Slot> slot = new ArrayList<Slot>();
 
     public String addPatient(Patient P) {
         patient.add(P);
-        return "'"+P.getName()+"' added successfully";
+        return "'" + P.getName() + "' added successfully";
     }
 
     public String deletePatient(int qid) {
@@ -65,9 +66,9 @@ public class ShefaAdminApp {
     }
 
     public void showAllPatients() {
-        for(int i = 0; i<patient.size();i++){
+        for (int i = 0; i < patient.size(); i++) {
             Patient p = patient.get(i);
-            System.out.println(p.getPid()+" "+p.getName()+" "+p.getResidanceType());
+            System.out.println(p.getPid() + " " + p.getName() + " " + p.getResidanceType());
         }
     }
 
@@ -97,8 +98,8 @@ public class ShefaAdminApp {
     public List<Slot> getServiceSlotsStatus(Date date, String ServTitle) {
         return null;
     }
-    
-    public Boolean getSlotsPerService(String ServName, Date date, Time time){
+
+    public Boolean getSlotsPerService(String ServName, Date date, Time time) {
         return null;
     }
 }
