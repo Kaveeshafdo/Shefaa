@@ -10,16 +10,14 @@ package main;
  * @author Jamit
  */
 public class Common {
-    private int slotId=0;
+    private static int slotId=0;
 
-    public int getSlotId() {
+    public static int getSlotId() {
         setSlotId(slotId+1);
         return slotId;
     }
 
-    public void setSlotId(int slotId) {
-        this.slotId = slotId;
+    public static void setSlotId(int slotId) {
+        Common.slotId = slotId;
     }
-    
-    
 }

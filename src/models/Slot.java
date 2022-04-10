@@ -13,11 +13,11 @@ import java.util.Date;
  */
 public class Slot {
     private int id;
-    private Date time;
-    private Date date;
+    private String time;
+    private String date;
     private boolean isBook;
 
-    public Slot(int id, Date time, Date date, boolean isBook, Service allocatedService, Patient allocatedPatient) {
+    public Slot(int id, String time, String date, boolean isBook, Service allocatedService, Patient allocatedPatient) {
         this.id = id;
         this.time = time;
         this.date = date;
@@ -34,19 +34,19 @@ public class Slot {
         this.id = id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

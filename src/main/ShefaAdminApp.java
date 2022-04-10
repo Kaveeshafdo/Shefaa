@@ -106,6 +106,8 @@ public class ShefaAdminApp {
     }
 
     public String addEmptySlot() {
+        
+        slot.add(new Slot(Common.getSlotId(), "", "", false, null, null));
         return "";
     }
 
