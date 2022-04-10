@@ -57,7 +57,7 @@ public class ShefaAdminApp {
                 String name = patient.get(i).getName();
                 patient.get(i).setName(newName);
                 patient.get(i).setResidanceType(residenttype);
-                return "'" + name + "' Modified successfully as '"+patient.get(i).getName()+"'";
+                return "'" + name + "' Modified successfully as '" + patient.get(i).getName() + "'";
             }
         }
         return "Patient Not Found!";
@@ -65,7 +65,7 @@ public class ShefaAdminApp {
 
     public String addService(Service s) {
         service.add(s);
-        return "'" + s.getTitle()+ "' added successfully";
+        return "'" + s.getTitle() + "' added successfully";
     }
 
     public String deleteService(String serveTitle) {
@@ -94,21 +94,20 @@ public class ShefaAdminApp {
 
     public String modifyService(int sid, String title, int maxSlots, int pricePerSlot) {
         for (int i = 0; i < service.size(); i++) {
-            if (service.get(i).getId()== sid) {
+            if (service.get(i).getId() == sid) {
                 String name = service.get(i).getTitle();
                 service.get(i).setTitle(title);
                 service.get(i).setMaxSlots(maxSlots);
                 service.get(i).setPricePerSlot(pricePerSlot);
-                return "'" + name + "' Modified successfully as '"+service.get(i).getTitle()+"'";
+                return "'" + name + "' Modified successfully as '" + service.get(i).getTitle() + "'";
             }
         }
         return "Service Not Found!";
     }
 
-    public String addEmptySlot() {
-        
-        slot.add(new Slot(Common.getSlotId(), "", "", false, null, null));
-        return "";
+    public String addEmptySlot(String date, String time) {
+        slot.add(new Slot(Common.getSlotId(), time, date, false, null, null));
+        return "Slot added successfully";
     }
 
     public List<Slot> getAvailableSlotsPerServiceByDate(String ServTitle, Date date) {
@@ -118,7 +117,7 @@ public class ShefaAdminApp {
     public void showAllServices() {
         for (int i = 0; i < service.size(); i++) {
             Service s = service.get(i);
-            System.out.println(s.getId() + " " + s.getTitle()+ " " + s.getMaxSlots()+ " " + s.getPricePerSlot());
+            System.out.println(s.getId() + " " + s.getTitle() + " " + s.getMaxSlots() + " " + s.getPricePerSlot());
         }
     }
 
@@ -130,26 +129,59 @@ public class ShefaAdminApp {
     }
 
     public void showAllSlots() {
+        for (int i = 0; i < slot.size(); i++) {
+            Slot p = slot.get(i);
+            System.out.println(p.getId() + " " + p.getDate() + " " + p.getTime()
+                    + " " + p.getAllocatedPatient().getName() + " " + p.getAllocatedService().getTitle() + " " + p.isIsBook());
+        }
     }
 
-    public String deleteSlot(int servID, Date date, Time time) {
-        return "";
+    public String deleteSlot(int servID, String date, String time) {
+        Slot p = null;
+        for (int i = 0; i < patient.size(); i++) {
+            p = slot.get(i);
+            if (p.getAllocatedService().getId() == servID && p.getDate().equals(date) && p.getTime().equals(time)) {
+
+                slot.remove(i);
+                return "Slot Delete Successfully";
+            }
+        }
+        return "Slot not found!";
     }
 
     public String reserveSlot(int QID, Date date, Time time) {
         return "";
     }
 
-    public List<Slot> findSlotsByDate(Date date) {
-        return null;
+    public List<Slot> findSlotsByDate(String date) {
+        List<Slot> list = new ArrayList<Slot>();
+        for (int i = 0; i < slot.size(); i++) {
+            if (slot.get(i).getDate().equals(date)) {
+                list.add(slot.get(i));
+            }
+        }
+        return list;
     }
 
     public List<Slot> showAvailableSlots() {
-        return null;
+        List<Slot> list = new ArrayList<Slot>();
+        for (int i = 0; i < slot.size(); i++) {
+            if (!slot.get(i).isIsBook()) {
+                list.add(slot.get(i));
+            }
+        }
+        return list;
     }
 
-    public Boolean IsSlotAvailable(String ServName, Date date, Time time) {
-        return null;
+    public Boolean IsSlotAvailable(String ServName, String date, String time) {
+        Slot p = null;
+        for (int i = 0; i < patient.size(); i++) {
+            p = slot.get(i);
+            if (p.getAllocatedService().getTitle().equals(ServName) && p.getDate().equals(date) && p.getTime().equals(time)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<Slot> getServiceSlotsStatus(Date date, String ServTitle) {

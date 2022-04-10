@@ -12,10 +12,13 @@ import java.util.Date;
  * @author Jamith
  */
 public class Slot {
+
     private int id;
     private String time;
     private String date;
     private boolean isBook;
+    private Service allocatedService;
+    private Patient allocatedPatient;
 
     public Slot(int id, String time, String date, boolean isBook, Service allocatedService, Patient allocatedPatient) {
         this.id = id;
@@ -25,7 +28,7 @@ public class Slot {
         this.allocatedService = allocatedService;
         this.allocatedPatient = allocatedPatient;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -73,6 +76,5 @@ public class Slot {
     public void setAllocatedPatient(Patient allocatedPatient) {
         this.allocatedPatient = allocatedPatient;
     }
-    private Service allocatedService;
-    private Patient allocatedPatient;
+
 }
